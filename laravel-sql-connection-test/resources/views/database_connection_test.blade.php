@@ -22,10 +22,7 @@
         <button type="submit">Run Test</button>
     </form>
 
-    @isset($result)
-            <p>{{ $result }}</p>
-        </div>
-    @endisset
+    <p>{{ $result }}</p>
 
 </body>
 </html>
