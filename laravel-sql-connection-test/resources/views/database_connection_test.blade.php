@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Database Connection Test</h1>
-    <form action="/test-database-connection" method="post">
+    <form action="resources/views/test-database-connection" method="post">
         @csrf
         <label for="host">Host:</label>
         <input type="text" name="host" required><br><br>
