@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Database Connection Test</h1>
-    <form action="resources/views/test-database-connection" method="post">
+    <form action="{{ route('test-database-connection') }}" method="post">
         @csrf
         <label for="host">Host:</label>
         <input type="text" name="host" required><br><br>
@@ -21,5 +21,11 @@
 
         <button type="submit">Run Test</button>
     </form>
+
+    @isset($result)
+            <p>{{ $result }}</p>
+        </div>
+    @endisset
+
 </body>
 </html>

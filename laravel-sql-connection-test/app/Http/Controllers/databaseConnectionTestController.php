@@ -11,9 +11,15 @@ class databaseConnectionTestController extends Controller
     {
         try {
             DB::connection()->getPdo();
-            return "Connected to the database successfully!";
+            $message = "Connected to the database successfully!";
+             return view('database-connection-test', ['result' => $message]);
         } catch (\Exception $e) {
             return "Database connection failed: " . $e->getMessage();
         }
+    }
+
+    public function showForm()
+    {
+        return view('database-connection-test');
     }
 }

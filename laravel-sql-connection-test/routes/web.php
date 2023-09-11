@@ -3,12 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseConnectionTestController;
 
-Route::get('app/http/controllers/test-database-connection-form', function () {
-    return view('app/http/controllers/database_connection_test');
+Route::get('/test-database-connection-form', function () {
+    return view('/database_connection_test');
 });
 
+Route::get('/test-database-connection', [DatabaseConnectionTestController::class, 'showForm']);
+
+Route::post('/test-database-connection', [DatabaseConnectionTestController::class, 'index'])->name('test-database-connection');
+
 // Route for testing the database connection
-Route::get('app/http/controllers/test-database-connection', [DatabaseConnectionTestController::class, 'index']);
+// Route::get('app/http/controllers/test-database-connection', [DatabaseConnectionTestController::class, 'index']);
 
 /*
 |--------------------------------------------------------------------------
