@@ -56,8 +56,7 @@ jobs:
       - name: Run composer install if composer.json exists
         run: |
           if [ -f "$GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json" ]; then
-            echo "test"
-            composer validate --no-check-publish && composer install --prefer-dist --no-progress
+            bash -c "composer validate --no-check-publish && composer install --prefer-dist --no-progress"
           else
             echo "composer.json does not exist, skipping composer install."
           fi
