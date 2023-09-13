@@ -40,8 +40,12 @@ jobs:
           fi
 
       - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
+        run: |
+          if [[ "${{ steps.check_files.outputs.files_exists }}" == 'true' ]]
+            composer validate --no-check-publish && composer install --prefer-dist --no-progress
+          else
+            eccho "composer.json does not exist, skipping composer install."
+          fi
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
