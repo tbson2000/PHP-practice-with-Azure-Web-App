@@ -39,20 +39,20 @@ jobs:
             ls -R ./laravel-sql-connection-test
           fi
 
-      - name: Debug Working Directory
-        run: |
-          pwd
-          ls -R
+      # - name: Debug Working Directory
+      #   run: |
+      #     pwd
+      #     ls -R
 
-      - name: Debug laravel-sql-connection-test Directory
-        run: |
-          cd $GITHUB_WORKSPACE/laravel-sql-connection-test
-          pwd
-          ls -R
+      # - name: Debug laravel-sql-connection-test Directory
+      #   run: |
+      #     cd $GITHUB_WORKSPACE/laravel-sql-connection-test
+      #     pwd
+      #     ls -R
 
       - name: Run composer install if composer.json exists
         run: |
-          if [ -f $GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json ]; then
+          if [ -f "$GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json" ]; then
             composer validate --no-check-publish && composer install --prefer-dist --no-progress
           else
             echo "composer.json does not exist, skipping composer install."
