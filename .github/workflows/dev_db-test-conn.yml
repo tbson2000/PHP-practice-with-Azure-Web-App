@@ -33,7 +33,9 @@ jobs:
       - name: Run composer install 
         uses: php-actions/composer@v6
         with:
-          args: require install --prefer-dist --no-progress
+          command: require install 
+          progress: no
+
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
