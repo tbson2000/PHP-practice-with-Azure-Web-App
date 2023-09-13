@@ -23,10 +23,9 @@ jobs:
 
       - name: Check if composer.json exists
         id: check_files
-        working-directory: ./laravel-sql-connection-test
         uses: andstor/file-existence-action@v1
         with:
-          files: 'composer.json'
+          files: './laravel-sql-connection-test/composer.json'
 
       - name: Run composer install if composer.json exists
         if: steps.check_files.outputs.files_exists == 'true'
