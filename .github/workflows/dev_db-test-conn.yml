@@ -21,15 +21,26 @@ jobs:
         with:
           php-version: '8.2'
 
-      # - name: Check if composer.json exists
-      #   id: check_files
-      #   uses: andstor/file-existence-action@v1
-      #   with:
-      #     files: 'composer.json'
-      #     path: ./laravel-sql-connection-test
+      - name: List Files in Working Directory
+        run: ls -R
+
+      - name: Check if composer.json exists
+        # id: check_files
+        # uses: andstor/file-existence-action@v1
+        # with:
+        #   files: 'composer.json'
+        #   path: ./laravel-sql-connection-test
+
+        run: |
+          if [ -f ./laravel-sql-connection-test/composer.json ]; then
+            echo "composer.json exists"
+          else
+            echo "composer.json does not exist"
+            ls -R ./laravel-sql-connection-test
+          fi
 
       - name: Run composer install if composer.json exists
-        # if: steps.check_files.outputs.files_exists == 'true'
+        if: steps.check_files.outputs.files_exists == 'true'
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
       - name: Upload artifact for deployment job
