@@ -24,15 +24,6 @@ jobs:
         with:
           php-version: '8.2'
           tools: composer:v6
-
-      - name: Check if composer.json exists
-        run: |
-          if [ -f ./laravel-sql-connection-test/composer.json ]; then
-            echo "composer.json exists"
-          else
-            echo "composer.json does not exist"
-            ls -R ./laravel-sql-connection-test
-          fi
     
       - name: Run composer validate
         uses: php-actions/composer@v6
