@@ -23,12 +23,12 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          tools: composer:v6
+          tools: composer:v2
     
       - name: Run composer validate
         uses: php-actions/composer@v6
         with:
-          args: validate --no-check-publish install 
+          args: validate --no-check-publish
 
       - name: Run composer install 
         uses: php-actions/composer@v6
