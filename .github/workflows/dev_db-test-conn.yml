@@ -21,12 +21,6 @@ jobs:
         with:
           php-version: '8.2'
 
-      - name: Composer Installer
-        uses: nanasess/composer-installer-action@master
-      
-      # - name: Installer comment
-      #   run: composer install
-
       - name: List Files in Working Directory
         run: ls -R
 
@@ -38,29 +32,12 @@ jobs:
             echo "composer.json does not exist"
             ls -R ./laravel-sql-connection-test
           fi
-
-      # - name: Debug Working Directory
-      #   run: |
-      #     pwd
-      #     ls -R
-
-      # - name: Debug laravel-sql-connection-test Directory
-      #   run: |
-      #     cd $GITHUB_WORKSPACE/laravel-sql-connection-test
-      #     pwd
-      #     ls -R
-      # - name: Debug Directory Contents
-      #   run: |
-      #     ls -R "$GITHUB_WORKSPACE/laravel-sql-connection-test"
     
-      # - name: Run composer install if composer.json exists
-      #   run: |
-      #     if [ -f "$GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json" ]; then
-      #       composer validate --no-check-publish && composer install --prefer-dist --no-progress
-      #     else
-      #       echo "composer.json does not exist, skipping composer install."
-      #     fi
-
+      - name: Run composer install if composer.json exists
+        uses: php-actions/composer@v6
+        with:
+          command: composer validate --no-check-publish && composer install --prefer-dist --no-progress
+        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
