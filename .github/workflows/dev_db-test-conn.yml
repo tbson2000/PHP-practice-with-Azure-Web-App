@@ -49,7 +49,10 @@ jobs:
       #     cd $GITHUB_WORKSPACE/laravel-sql-connection-test
       #     pwd
       #     ls -R
-
+      - name: Debug Directory Contents
+        run: |
+          ls -R "$GITHUB_WORKSPACE/laravel-sql-connection-test"
+    
       - name: Run composer install if composer.json exists
         run: |
           if [ -f "$GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json" ]; then
