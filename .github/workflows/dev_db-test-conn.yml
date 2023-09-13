@@ -56,17 +56,17 @@ jobs:
       #     cd $GITHUB_WORKSPACE/laravel-sql-connection-test
       #     pwd
       #     ls -R
-      - name: Debug Directory Contents
-        run: |
-          ls -R "$GITHUB_WORKSPACE/laravel-sql-connection-test"
+      # - name: Debug Directory Contents
+      #   run: |
+      #     ls -R "$GITHUB_WORKSPACE/laravel-sql-connection-test"
     
-      - name: Run composer install if composer.json exists
-        run: |
-          if [ -f "$GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json" ]; then
-            bash -c "composer validate --no-check-publish && composer install --prefer-dist --no-progress"
-          else
-            echo "composer.json does not exist, skipping composer install."
-          fi
+      # - name: Run composer install if composer.json exists
+      #   run: |
+      #     if [ -f "$GITHUB_WORKSPACE/laravel-sql-connection-test/composer.json" ]; then
+      #       composer validate --no-check-publish && composer install --prefer-dist --no-progress
+      #     else
+      #       echo "composer.json does not exist, skipping composer install."
+      #     fi
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
