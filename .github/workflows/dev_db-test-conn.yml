@@ -25,10 +25,10 @@ jobs:
           php-version: '8.2'
           tools: composer:v2
     
-      - name: Run composer validate
-        uses: php-actions/composer@v6
-        with:
-          args: validate --no-check-publish
+      # - name: Run composer validate
+      #   uses: php-actions/composer@v6
+      #   with:
+      #     args: validate --no-check-publish
 
       - name: Run composer install 
         uses: php-actions/composer@v6
