@@ -39,10 +39,10 @@ jobs:
       - name: Test Nginx Configuration
         run: sudo nginx -t
 
-      - name: Generate PHP key
-        run: |
-          cd /home/site/wwwroot && cp -n .env.example .env
-          php artisan key:generate
+      # - name: Generate PHP key
+      #   run: |
+      #     cd /home/site/wwwroot && cp -n .env.example .env
+      #     php artisan key:generate
 
       - name: Restart Nginx
         run: sudo systemctl restart nginx
