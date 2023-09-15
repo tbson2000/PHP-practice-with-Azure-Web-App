@@ -34,7 +34,7 @@ jobs:
       - name: Modify nginx configuration
         run: |
           # Use sed to replace the root directive
-          sed -i 's|root /home/site/wwwroot;|root /home/site/wwwroot/public;|' /etc/nginx/sites-enabled/default
+          sudo sed -i 's|root /home/site/wwwroot;|root /home/site/wwwroot/public;|' /etc/nginx/sites-enabled/default
 
       - name: Test Nginx Configuration
         run: sudo nginx -t
