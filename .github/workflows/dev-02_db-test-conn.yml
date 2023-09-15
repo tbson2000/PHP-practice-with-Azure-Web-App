@@ -31,12 +31,27 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true'
         run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
 
+      - name: Modify nginx configuration
+        run: |
+          # Use sed to replace the root directive
+          sed -i 's|root /home/site/wwwroot;|root /home/site/wwwroot/public;|' /etc/nginx/sites-enabled/default
+
+      - name: Test Nginx Configuration
+        run: sudo nginx -t
+
+      - name: Generate PHP key
+        run: |
+          cd /home/site/wwwroot && cp -n .env.example .env
+          php artisan key:generate
+
+      - name: Restart Nginx
+        run: sudo systemctl restart nginx
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: php-app
           path: .
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
