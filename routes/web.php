@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatabaseConnectionTestController;
 
-Route::get('/test-database-connection-form', function () {
+Route::get('/', function () {
     return view('/database_connection_test');
 });
 
